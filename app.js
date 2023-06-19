@@ -24,7 +24,10 @@ app.use(limiter);
 // Set up mongoose connection
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
-const mongoDB = "mongodb+srv://bbzz167:MonO2OgyZBtvM5yX@cluster0.hyx8ime.mongodb.net/local_library?retryWrites=true&w=majority";
+//const mongoDB = "mongodb+srv://bbzz167:MonO2OgyZBtvM5yX@cluster0.hyx8ime.mongodb.net/local_library?retryWrites=true&w=majority";
+const dev_db_url = "mongodb+srv://bbzz167:MonO2OgyZBtvM5yX@cluster0.hyx8ime.mongodb.net/local_library?retryWrites=true&w=majority";
+
+const mongoDB = process.env.MONGODB_URI || dev_db_url;
 
 main().catch((err) => console.log(err));
 async function main() {
